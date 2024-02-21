@@ -1,10 +1,11 @@
 import React from 'react'
 import { RxDashboard } from "react-icons/rx";
-import { FiActivity } from "react-icons/fi";
-import { GrTask } from "react-icons/gr";
-import { GrInProgress } from "react-icons/gr";
-import { GrFavorite } from "react-icons/gr";
+import { PiStudent } from "react-icons/pi";
+import { SiMicrosoftacademic } from "react-icons/si";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { FiMessageSquare } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+
 export const SidebarData = [
     {
         title:'Dashboard',
@@ -14,27 +15,27 @@ export const SidebarData = [
         
     },
     {
-        title: 'MyActivity',
-        path: '/myactivity',
-        icon: <FiActivity />,
+        title: 'Student',
+        path: '/student',
+        icon: <PiStudent />,
         cName: 'nav-text'
     },
     {
-        title:'Tasks',
-        path:'/tasks',
-        icon:<GrTask />,
+        title:'Academics',
+        path:'/academics',
+        icon:<SiMicrosoftacademic />,
         cName:'nav-text'
     },
     {
-        title:'Progress',
-        path:'/progress',
-        icon:<GrInProgress />,
+        title:'Non-Academics',
+        path:'/nonacademics',
+        icon:<MdOutlineAdminPanelSettings />,
         cName:'nav-text'
     },
     {
-        title:'Favorites',
-        path:'/favorites',
-        icon:<GrFavorite />,
+        title:'Messages',
+        path:'/massages',
+        icon:<FiMessageSquare />,
         cName:'nav-text'
     },
     {
