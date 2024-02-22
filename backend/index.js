@@ -1,17 +1,30 @@
 import express from 'express';
-const mysql = require('mysql');
-const cors = require('cors');
-
+import mysql from 'mysql2';
+import cors from 'cors';
 const app = express();
 
 app.use(cors());
 
 const db = mysql.createConnection({
   user: 'root',
-  host: 'localhost',
-  password: '',
-  database: 'test001'
+  host: '127.0.0.1',
+  password: 'root',
+  database: 'test'
+}
+);
+
+db.connect((err) => {
+  if (err) {
+    console.log("connection error",err);
+  } else {
+    console.log('Mysql Connected...');
+  }
 });
+
+app.get('/login', (req, res)=>{
+  console.log("this is backend")
+})
+
 
 app.post('/login', (req, res) => {
   const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
@@ -28,3 +41,4 @@ app.post('/login', (req, res) => {
  app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
+
