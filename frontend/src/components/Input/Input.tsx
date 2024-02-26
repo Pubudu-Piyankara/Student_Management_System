@@ -14,7 +14,7 @@ const Input = ({ label, type, placeholder, handleValueMethod }: Props ) => {
             <div className="flex flex-col lg:flex-row mx-auto items-start justify-around lg:mb-0">
                 <label className="mb-2 lg:mb-0 lg:mr-4" htmlFor={label}>{label}</label>
                 <input
-                    className="border rounded-full py-2 px-3 mb-4  lg:mb-0 text-grey-darker w-96 lg:w-auto"
+                    className=" lg:border rounded-full py-2 px-3 text-grey-darker w-28 sm:w-96"
                     type={type}
                     placeholder={placeholder}
                     onChange={(e) => handleValueMethod(e.target.value)}
