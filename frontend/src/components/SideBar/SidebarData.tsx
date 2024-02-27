@@ -18,7 +18,7 @@ export const SidebarData = [
     },
     {
         title: 'Student',
-        path: '/student',
+        path: '/pubu',
         icon: PiStudent,
         cName: 'nav-text',
         margin: true

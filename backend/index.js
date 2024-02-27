@@ -2,16 +2,19 @@ import express from 'express';
 import mysql from 'mysql2';
 import cors from 'cors';
 
-
 const app = express();
 
+app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:3000' // Update the origin to match your React app's origin
+}));
 
-app.use(cors());
 
 
 const db = mysql.createConnection({
   user: 'root',
   host: '127.0.0.1',
+  port: 3306,
   password: 'root',
   database: 'sms'
 }
@@ -22,61 +25,35 @@ db.connect((err) => {
     console.log("connection error",err);
   } else {
     console.log('Mysql Connected...');
-    db.query("SELECT * FROM users", (err, result) => {
-      if (err) {
-        console.log( err);
-      } else {
-        console.log("result", result);
-      }
-    });
+    // db.query("SELECT * FROM users", (err, result) => {
+    //   if (err) {
+    //     console.log( err);
+    //   } else {
+    //     console.log("result", result);
+    //   }
+    // });
   }
 });
 
-
-
-
-// app.post('/login', (req, res) => {
-//   const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-//   const values = [
-//     req.body.email,
-//     req.body.password
-//   ]
-//   db.query(sql, values, (err, result) => {
-//     if (err) return res.json("Login Failed");
-//     return res.json(result);
-//   }
-//   );
-// });
-
-
-app.get("/student", (req, res) => {
+app.get("/pubu", (req, res) => {
   const q = "SELECT * FROM students";
   db.query(q, (err, result) => {
-    if (err) return res.json(err);
-    return res.json(result);
+    if (err) return res.status(500).json(err);
+    return res.status(200).json( result);
   });
-}
-);
-
-app.post("/student", (req, res) => {
-  const q = "INSERT INTO students (firstName, lastName, sirName, Student_Id, age) VALUES (?,?,?,?,?)";
-  const values = [
-    "udan",
-    "janat",
-    "perera",
-    4562,
-    13
-  ]
-  db.query(q, values, (err, result) => {
-    if (err) return res.json(err);
-    return res.json("nfdklkdj");
-  }); 
-}
-);
+});
 
 
+// const options = {
+//   key: fs.readFileSync('dist/openssl.key'),
+//   cert: fs.readFileSync('dist/openssl.crt'),
+//   passphrase: 'pubudu'
+// };
 
- app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// const server = https.createServer(options, app);
+
+
+ app.listen(8800, () => {
+  console.log('Server is running on port 443. are sure?');
 });
 
