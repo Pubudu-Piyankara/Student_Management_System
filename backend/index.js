@@ -35,7 +35,7 @@ db.connect((err) => {
   }
 });
 
-app.get("/pubu", (req, res) => {
+app.get("/student", (req, res) => {
   const q = "SELECT * FROM students";
   db.query(q, (err, result) => {
     if (err) return res.status(500).json(err);

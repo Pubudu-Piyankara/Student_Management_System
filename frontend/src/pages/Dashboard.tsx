@@ -22,19 +22,19 @@ const Dashboard = (props: Props) => {
         <div>
           <div className="gap-3 w-auto h-auto justify-center lg:grid grid-flow-col grid-cols-3 x-2 py-2 ">
             <CardComponent
-              title="Card Title"
+              title="Students"
+              description="23"
+              imgAlt="Card Image"
+              imgSrc={student}
+            />
+            <CardComponent
+              title="Teachers"
               description="This is a card description"
               imgAlt="Card Image"
               imgSrc={student}
             />
             <CardComponent
-              title="Card Title"
-              description="This is a card description"
-              imgAlt="Card Image"
-              imgSrc={student}
-            />
-            <CardComponent
-              title="Card Title"
+              title="Staffs"
               description="This is a card description"
               imgAlt="Card Image"
               imgSrc={student}

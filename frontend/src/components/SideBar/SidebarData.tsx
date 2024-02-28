@@ -18,14 +18,14 @@ export const SidebarData = [
     },
     {
         title: 'Student',
-        path: '/pubu',
+        path: '/student',
         icon: PiStudent,
         cName: 'nav-text',
         margin: true
     },
     {
-        title:'Academics',
-        path:'/academics',
+        title:'Teachers',
+        path:'/teachers',
         icon:SiMicrosoftacademic,
         cName:'nav-text',
         margin:true

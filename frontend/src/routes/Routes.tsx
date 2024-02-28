@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Student from "../pages/Student";
+import { ChangeEvent } from "react";
 
 export const router = createBrowserRouter([
     {
@@ -15,8 +16,10 @@ export const router = createBrowserRouter([
         // ],
     },
     {
-        path: "/pubu",
-        element: <Student />,
+        path: "/student",
+        element: <Student addText={""} on={function (e: ChangeEvent<HTMLInputElement>): void {
+            throw new Error("Function not implemented.");
+        } } inputConfigs={[]} />,
     },	
   
 ])

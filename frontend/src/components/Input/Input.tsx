@@ -1,23 +1,24 @@
+import { on } from 'events';
 import React from 'react';
 
 type Props = {
     label: string,
     type: string,
     placeholder: string,
-    handleValueMethod: (value: string) => void
+    onchange: (value: any) => void
 }
 
-const Input = ({ label, type, placeholder, handleValueMethod }: Props ) => {
+const Input = ({ onchange, type, placeholder }: Props ) => {
     
     return (
         <div>
-            <div className="flex flex-col lg:flex-row mx-auto items-start justify-around lg:mb-0">
-                <label className="mb-2 lg:mb-0 lg:mr-4" htmlFor={label}>{label}</label>
+            <div className="flex flex-col lg:flex-row  items-start lg:mb-0">
+                
                 <input
-                    className=" lg:border rounded-full py-2 px-3 text-grey-darker w-28 sm:w-96"
+                    className="w-96 lg:border rounded-full py-2 px-3 text-grey-darker  sm:"
                     type={type}
                     placeholder={placeholder}
-                    onChange={(e) => handleValueMethod(e.target.value)}
+                    onChange={onchange}
                 />
             </div>
         </div>
