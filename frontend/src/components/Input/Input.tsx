@@ -6,9 +6,10 @@ type Props = {
     type: string,
     placeholder: string,
     onchange: (value: any) => void
+    addName: string
 }
 
-const Input = ({ onchange, type, placeholder }: Props ) => {
+const Input = ({ onchange, type, placeholder,addName }: Props ) => {
     
     return (
         <div>
@@ -19,6 +20,7 @@ const Input = ({ onchange, type, placeholder }: Props ) => {
                     type={type}
                     placeholder={placeholder}
                     onChange={onchange}
+                    name={addName}
                 />
             </div>
         </div>

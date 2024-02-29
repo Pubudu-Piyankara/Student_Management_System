@@ -43,6 +43,21 @@ app.get("/student", (req, res) => {
   });
 });
 
+app.post("/student", (req, res) => {
+  const q = "INSERT INTO students (`firstName`, `lastName`, `sirName`, `student_Id`, `age`) VALUES (?,?,?,?,?)";
+  const values = [
+    req.body.firstName,
+    req.body.lastName,
+    req.body.sirName,
+    req.body.Student_Id,
+    req.body.age
+  ]
+  db.query(q, [values], (err, result) => {
+    if (err) return res.json(err);
+    return res.json("Add student successfully");
+  }); 
+}
+);
 
 // const options = {
 //   key: fs.readFileSync('dist/openssl.key'),

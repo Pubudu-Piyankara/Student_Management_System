@@ -10,7 +10,9 @@ import Input from "../Input/Input";
 type Props = { 
     addText: string; 
     onAdd: (e:React.MouseEvent<HTMLButtonElement, MouseEvent> ) => void; 
-    inputConfigs: InputConfig[]
+    inputConfigs: InputConfig[],
+    onCha: (e: React.ChangeEvent<HTMLInputElement>) => void
+    adname: string
  };
 
 type InputConfig = {
@@ -19,17 +21,20 @@ type InputConfig = {
   placeholder: string;
 };
 
-const CrudTab = ({ addText, inputConfigs, onAdd }: Props) => {
-  const tabsRef = useRef<TabsRef>(null);
-  const [activeTab, setActiveTab] = useState(0);
+const CrudTab = ({ addText, inputConfigs, onAdd, onCha, adname}: Props) => {
+  //const tabsRef = useRef<TabsRef>(null);
+  //const [activeTab, setActiveTab] = useState(0);
+
+  
+
 
   return (
     <div className="flex flex-col gap-3">
       <Tabs
-        aria-label="Default tabs"
-        style="default"
-        ref={tabsRef}
-        onActiveTabChange={(tab) => setActiveTab(tab)}
+        //aria-label="Default tabs"
+        
+        //ref={tabsRef}
+        //onActiveTabChange={(tab) => setActiveTab(tab)}
       >
         <Tabs.Item active title="Add" icon={HiUserCircle}>
           Add{" "}
@@ -45,7 +50,8 @@ const CrudTab = ({ addText, inputConfigs, onAdd }: Props) => {
                 label={config.label}
                 type={config.type}
                 placeholder={config.placeholder}
-                onchange={(e) => console.log(e)}
+                onchange={onCha}
+                addName={adname}
               />
             </div>
           ))}

@@ -13,14 +13,26 @@ const Student = (props: Props) => {
   const [addStudent, setAddStudent] = useState({
     firstName: "",
     lastName: "",
-    age: 0,
     sirName: "",
-    student_Id: ""
-  
+    student_Id: 0,
+    age: 0,
+
   });
   const handleAdd = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    //
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:8800/student", addStudent);
+      console.log( 'success',res);
+    } catch (err) {
+      console.error(err);
+    }
   }
+
+  const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddStudent({ ...addStudent, [e.target.name]: e.target.value });
+  }
+
+  console.log(addStudent);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -55,16 +67,17 @@ const Student = (props: Props) => {
         ))}
       </div>
         <div className="">
-          <CrudTab addText="new student " 
+          <CrudTab addText="new student "
           onAdd={handleAdd}
+          onCha={handelChange}
           inputConfigs={[
-            { label: "First Name", type: "text", placeholder: "Enter first name"  },
+            { label: "First Name", type: "text", placeholder: "Enter first name" },
             { label: "Last Name", type: "text", placeholder: "Enter last name" },
-            { label: "Age", type: "number", placeholder: "Enter age" },
             { label: "Sir Name", type: "text", placeholder: "Enter sir name" },
             { label: "Student ID", type: "text", placeholder: "Enter student ID" },
+            { label: "Age", type: "number", placeholder: "Enter age" },
             // Add more input configurations as needed
-          ]}/>
+          ]} adname={""}/>
         </div>
       </div>
     </div>
