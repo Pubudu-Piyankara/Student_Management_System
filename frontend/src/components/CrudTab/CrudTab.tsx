@@ -51,13 +51,13 @@ const CrudTab = ({ addText, inputConfigs, onAdd, onCha, adname}: Props) => {
                 type={config.type}
                 placeholder={config.placeholder}
                 onchange={onCha}
-                addName={adname}
+                name={adname}
               />
             </div>
           ))}
-          <Button color="gray" onClick={onAdd}>
+          {/* <Button color="gray" onClick={onAdd}>
             Add
-          </Button>
+          </Button> */}
         </Tabs.Item>
         <Tabs.Item title="Dashboard" icon={MdDashboard}>
           This is{" "}

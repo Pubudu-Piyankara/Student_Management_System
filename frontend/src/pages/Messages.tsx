@@ -3,14 +3,14 @@ import SideBar from '../components/SideBar/SideBar'
 
 type Props = {}
 
-const Profile = (props: Props) => {
+const Messages = (props: Props) => {
   return (
     <div>
-      <div>
+        <div>
         <SideBar />
       </div>
-      Profile</div>
+      Messages</div>
   )
 }
 
-export default Profile
+export default Messages

@@ -14,7 +14,7 @@ const NavBar = (props: Props) => {
           type='text' 
           placeholder='Search' 
           onchange={(e) => console.log(e)}
-          addName='search'
+          name='search'
         />
       </div>
       <div className="flex items-center"> {/* Adjust alignment for better responsiveness */}

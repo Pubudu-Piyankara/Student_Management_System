@@ -3,14 +3,14 @@ import SideBar from '../components/SideBar/SideBar'
 
 type Props = {}
 
-const Profile = (props: Props) => {
+const Administration = (props: Props) => {
   return (
     <div>
-      <div>
+        <div>
         <SideBar />
       </div>
-      Profile</div>
+      Administration</div>
   )
 }
 
-export default Profile
+export default Administration

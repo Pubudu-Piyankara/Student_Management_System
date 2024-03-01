@@ -8,7 +8,7 @@ function SideBar() {
 
   const handleResize = () => {
     // Close the sidebar when the window width is less than or equal to a certain threshold (e.g., 768px)
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 1200) {
       setOpen(false);
     } else {
       setOpen(true);
@@ -32,7 +32,7 @@ function SideBar() {
         <section className={`flex gap-6 `}>
           <div
             className={`bg-[#e7e7e7] min-h-screen ${
-              open ? "w-72" : "w-16"
+              open ? "w-64" : "w-16"
             } duration-500 text-black-100 px-4`}
           >
             <div className="py-3 flex justify-end">

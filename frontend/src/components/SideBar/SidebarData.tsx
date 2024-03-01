@@ -2,7 +2,7 @@
 import React from 'react'
 import { RxDashboard } from "react-icons/rx";
 import { PiStudent } from "react-icons/pi";
-import { SiMicrosoftacademic } from "react-icons/si";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 export const SidebarData = [
     {
         title:'Dashboard',
-        path:'/',
+        path:'/dashboard',
         icon:RxDashboard ,
         cName:'nav-text',
         margin:true
@@ -26,14 +26,14 @@ export const SidebarData = [
     {
         title:'Teachers',
         path:'/teachers',
-        icon:SiMicrosoftacademic,
+        icon:LiaChalkboardTeacherSolid ,
         cName:'nav-text',
         margin:true
 
     },
     {
-        title:'Non-Academics',
-        path:'/nonacademics',
+        title:'Administration',
+        path:'/admin',
         icon:MdOutlineAdminPanelSettings,
         cName:'nav-text',
         margin:true

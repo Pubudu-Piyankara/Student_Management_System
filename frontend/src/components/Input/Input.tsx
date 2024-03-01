@@ -1,4 +1,4 @@
-import { on } from 'events';
+
 import React from 'react';
 
 type Props = {
@@ -6,10 +6,10 @@ type Props = {
     type: string,
     placeholder: string,
     onchange: (value: any) => void
-    addName: string
+    name: string
 }
 
-const Input = ({ onchange, type, placeholder,addName }: Props ) => {
+const Input = ({ onchange, type, placeholder,name }: Props ) => {
     
     return (
         <div>
@@ -20,7 +20,7 @@ const Input = ({ onchange, type, placeholder,addName }: Props ) => {
                     type={type}
                     placeholder={placeholder}
                     onChange={onchange}
-                    name={addName}
+                    name={name}
                 />
             </div>
         </div>
