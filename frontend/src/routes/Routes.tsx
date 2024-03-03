@@ -1,12 +1,15 @@
 import {createBrowserRouter} from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Student from "../pages/Student";
-import { ChangeEvent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
 import Login from "../pages/Login";
 import Teacher from "../pages/Teachers";
 import Administration from "../pages/Administration";
 import Messages from "../pages/Messages";
 import Profile from "../pages/Profile";
+import Update from "../pages/Update";
+import Details from "../pages/Details";
+import Search from "../pages/Search";
 
 export const router = createBrowserRouter([
     {
@@ -26,24 +29,11 @@ export const router = createBrowserRouter([
         } } />,
         children: [
             {
-                path: '/student/add',
+                path: '/student/:id',
                 element: <Student addText={"Add"} on={function (e: ChangeEvent<HTMLInputElement>): void {
                     throw new Error("Function not implemented.");
                 } } />
             },
-            {
-                path: '/student/delete',
-                element: <Student addText={"Delete"} on={function (e: ChangeEvent<HTMLInputElement>): void {
-                    throw new Error("Function not implemented.");
-                } } />
-            },
-            {
-                path: 'edit/:student_Id',
-                element: <Student addText={"edit "} on={function (e: ChangeEvent<HTMLInputElement>): void {
-                    throw new Error("Function not implemented.");
-                } } />
-            },
-
         ]
     },	
     {
@@ -61,6 +51,22 @@ export const router = createBrowserRouter([
     {
         path: "/profile",
         element: <Profile />,
+    },
+    {
+        path : "/update/:id",
+        element: <Update handleUpdate={function (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void {
+            throw new Error("Function not implemented.");
+        } } handelChange={function (e: ChangeEvent<HTMLInputElement>): void {
+            throw new Error("Function not implemented.");
+        } } />,
+    },
+    {
+        path:"/details/:id",
+        element: <Details />,
+    },
+    {
+        path: "/search",
+        element: <Search />,
     }
   
 ])
