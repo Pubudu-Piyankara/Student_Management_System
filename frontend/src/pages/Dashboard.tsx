@@ -17,7 +17,7 @@ const Dashboard = (props: Props) => {
 
       <div className="col-span-4 md:grid-flow-col">
         <div className="flex-row">
-          <NavBar />
+          <NavBar handleSearch={(e)=>console.log(e.target.value)}/>
         </div>
         <div>
           <div className="gap-3 w-auto h-auto justify-center lg:grid grid-flow-col grid-cols-3 x-2 py-2 ">

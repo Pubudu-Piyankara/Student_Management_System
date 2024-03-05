@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import { useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
 import NavBar from "../components/NavBar/NavBar";
@@ -10,6 +10,8 @@ import Button from "../components/Button/Button";
 import Label from "../components/Label/Label";
 import { FaListAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import StudentInterface  from "../types/Types";
+
 
 type Props = {
   addText: string;
@@ -17,51 +19,66 @@ type Props = {
 
 };
 
-const Student = (props: Props) => {
-  const [students, setStudents] = useState([]);
-  const [addStudent, setAddStudent] = useState({
-    studentFullName: "",
-    address: "",
-    indexNumber: 0,
-    dateOfBirth: "",
-    grade: 0,
-    motherName: "",
-    motherProfession: "",
-    fatherName: "",
-    fatherProfession: "",
-    guardianName: "",
-    guardianAddress: "",
-    guardianContact: 0,
-    extraCurricularActivities: "",
 
+
+const Student = (props: Props) => {
+  const [students, setStudents] = useState( [] as StudentInterface[] );
+  const [query, setQuery] = useState("");
+  const [newStudentData, setNewStudentData] = useState(
+    {} as StudentInterface
+  );
+
+  //---------------search---
+  const handleSearch = (e:ChangeEvent<HTMLInputElement>  ) => {
+    console.log(e.target.value);
+    setQuery(e.target.value);
+    
+  
+  const res = students.filter((student: StudentInterface) => {
+      for (const key of Object.keys(student)) {
+          const value = student[key as keyof StudentInterface];
+          if (value && typeof value === 'string' && value.toLowerCase().includes(query)) {
+              return true; // If any property matches, return true
+          }
+          if (typeof value === 'number' && value.toString().includes(query)) {
+              return true; // If any number property matches, return true
+          }
+      }
+      return false; // If no property matches, return false
   });
+  
+    setStudents(res);
+  };
 
   //--------------Fetch all students from the database----------------
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/student`);
+        const res = await axios.get(`http://localhost:8800/student?searchQ=${query}`);
         setStudents(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchStudents();
-  }, []);
+    
+    if(query.length === 0 ) fetchStudents();
+  }, [query]);
+
+  
 
   //--------------Add new student to the database----------------
   const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAddStudent((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setNewStudentData((prev: StudentInterface) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  console.log(addStudent);
+  console.log(newStudentData);
 
   const handleAdd = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/student", addStudent);
+      await axios.post("http://localhost:8800/student", newStudentData);
       window.location.reload();
       console.log("success");
     } catch (err) {
@@ -80,7 +97,7 @@ const Student = (props: Props) => {
     }
   };
   
-  
+ 
   
 
   return (
@@ -91,9 +108,13 @@ const Student = (props: Props) => {
 
       <div className="col-span-4 ">
         <div>
-          <NavBar  />
+          <NavBar handleSearch={handleSearch} />
         </div>
         <h1 className="text-2xl py-4">Students </h1>
+
+        <div>
+          
+        </div>
 
         <div className="">
           <div>
@@ -126,8 +147,8 @@ const Student = (props: Props) => {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {students.map((student: any) => (
-                        <tr key={student.studentId}>
+                      {students.map((student: StudentInterface) => (
+                        <tr key={student.id}>
                           <td  className="px-6 py-4 whitespace-nowrap hover:underline cursor-pointer"                          >
                             <Link to={`/details/${student.id}`} //--------------Open student details----------------
                             >

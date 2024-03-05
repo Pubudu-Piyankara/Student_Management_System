@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div>
-    <NavBar  />
+    <NavBar handleSearch={(e)=>console.log(e.target.value)} />
     <Outlet />
     </div>
   );

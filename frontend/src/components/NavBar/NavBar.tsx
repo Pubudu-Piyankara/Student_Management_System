@@ -2,13 +2,13 @@ import React from "react";
 import Input from "../Input/Input";
 import { CgProfile } from "react-icons/cg";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { Dropdown } from "flowbite-react";
 
+type Props = { handleSearch: (e: any) => void };
 
-
-type Props = {};
-
-const NavBar = (props: Props) => {
-  
+const NavBar = ({ handleSearch }: Props) => {
+  const handleClick = () => {};
 
   return (
     <div className="flex flex-row mr-auto lg:flex bg-white-300 justify-between bg-slate-50 px-5 py-4 w- sm:w-auto ">
@@ -19,7 +19,7 @@ const NavBar = (props: Props) => {
           label=""
           type="text"
           placeholder="Search"
-          onchange={(e) => console.log(e.target.value)}
+          onchange={handleSearch}
           name="search"
         />
       </div>
@@ -27,17 +27,31 @@ const NavBar = (props: Props) => {
         {" "}
         {/* Adjust alignment for better responsiveness */}
         <IoNotificationsOutline className="mr-4" /> {/* Adjust spacing */}
-        <CgProfile />
+        <IoSettingsOutline className="mr-4" />
+        <Dropdown
+          
+          dismissOnClick={false}
+          renderTrigger={() => (
+            <span className="hover:cursor-pointer">
+              <CgProfile onClick={handleClick} />
+            </span>
+          )}
+          label={""}
+        >
+          <Dropdown.Item onClick={() => alert("Dashboard!")}>
+            Profile details
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => alert("Settings!")}>
+            Settings
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => alert("Earnings!")}>
+            Earnings
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => alert("Sign out!")}>
+            Sign out
+          </Dropdown.Item>
+        </Dropdown>
       </div>
-      
-      {/* {searchResults.map((result: any) => (
-        <div key={result.studentId}>
-          <Link to={`/search`}>
-            <p>{result.studentFullName}</p>
-            <p>{result.indexNumber}</p>
-          </Link>
-        </div>
-      ))} */}
     </div>
   );
 };
