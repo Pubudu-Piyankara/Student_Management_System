@@ -10,8 +10,7 @@ import Button from "../components/Button/Button";
 import Label from "../components/Label/Label";
 import { FaListAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import StudentInterface  from "../types/Types";
-
+import  {StudentInterface} from "../types/Types";
 
 type Props = {
   addText: string;

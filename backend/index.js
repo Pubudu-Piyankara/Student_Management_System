@@ -12,7 +12,7 @@ app.use(
 );
 
 //---------------------------------------Database Connection-------------------
-const db = mysql.createConnection({
+export const db = mysql.createConnection({
   user: "root",
   host: "127.0.0.1",
   port: 3306,
@@ -138,7 +138,21 @@ app.get("/search", (req, res) => {
   });
 });
 
+//################################-TEACHERS-#####################
+//-------------------fetch all teachers in database---------------
+app.get("/teachers", (req, res) => {
+  const q = "SELECT * FROM teachers";
+  db.query(q, (err, result) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json( result.splice(0, 15));
+  });
+});
 
+//-------------------Insert new teacher deteails to the database----
+app.post('/teachers', (req,res)=>{
+  const q ="INSERT INTO teachers (teacherName, teacherIndex, contactNumber, address, age, qualification, tic) VALUES  (?,?,?,?,?,?,?) ";
+  
+})
 
 app.listen(8800, () => {
   console.log("Server is running on port 8800...");

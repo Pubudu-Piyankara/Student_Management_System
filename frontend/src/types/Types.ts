@@ -1,4 +1,4 @@
-interface StudenInterface {
+export interface StudentInterface {
     id: number,
     studentFullName: string,
     address: string,
@@ -15,4 +15,15 @@ interface StudenInterface {
     extraCurricularActivities: string,
 }
 
-export default StudenInterface;
+
+export interface TeacherInterface{
+    id:number,
+    teacherName: string,
+    teacherIndex: number,
+    contactNumber: number,
+    address: string,
+    age: number,
+    qualification: string,
+    tic: string,
+
+}
