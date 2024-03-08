@@ -2,7 +2,14 @@ import express, { query } from "express";
 import mysql from "mysql2";
 import cors from "cors";
 
+
+
+
 const app = express(); // create an express app
+
+import teacherRoutes from "./routes/teacherRoutes.js";
+
+app.use('/teachers', teacherRoutes);
 
 app.use(express.json()); // make express app to understand json format
 app.use(

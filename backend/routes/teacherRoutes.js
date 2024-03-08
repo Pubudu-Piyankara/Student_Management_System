@@ -1,5 +1,8 @@
-const express = require('express');
+import express from 'express';
+import teachersController from '../controllers/teachersController.js';
 const router = express.Router();
-const teachersController = require('../controllers/teachersController');
 
-router.get('/teachers', teachersController.getAllStudents);
+router.get('/teachers', teachersController.getAllTeachers);
+router.post('/teachers', teachersController.addTeacher);
+
+export default router;
