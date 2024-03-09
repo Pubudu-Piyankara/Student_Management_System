@@ -165,7 +165,7 @@ const Student = (props: Props) => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                             <button className="text-indigo-600 hover:text-indigo-900"                            >
-                              <Link to={`/update/${student.id}`}//--------------Edit student details---------------- 
+                              <Link to={`/updateStudent/${student.id}`}//--------------Edit student details---------------- 
                               > 
                                 Edit 
                               </Link>
@@ -185,7 +185,7 @@ const Student = (props: Props) => {
               </Tabs.Item>
               <Tabs.Item //--------------Add new student to the database----------------
               active title="Add New Student" icon={BsPersonFillAdd} id="add">
-                Add{}{" "}
+                Add{" "}
                 <span className="font-medium text-gray-800 dark:text-white">
                   {" new student "}
                 </span>{" "}

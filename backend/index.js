@@ -1,15 +1,11 @@
 import express, { query } from "express";
 import mysql from "mysql2";
 import cors from "cors";
-
-
+import teacherRoutes from "./routes/teacherRoutes.js";
 
 
 const app = express(); // create an express app
 
-import teacherRoutes from "./routes/teacherRoutes.js";
-
-app.use('/teachers', teacherRoutes);
 
 app.use(express.json()); // make express app to understand json format
 app.use(
@@ -156,11 +152,8 @@ app.get("/teachers", (req, res) => {
 });
 
 //-------------------Insert new teacher deteails to the database----
-app.post('/teachers', (req,res)=>{
-  const q ="INSERT INTO teachers (teacherName, teacherIndex, contactNumber, address, age, qualification, tic) VALUES  (?,?,?,?,?,?,?) ";
-  
-})
 
+app.use('/teachers', teacherRoutes);
 app.listen(8800, () => {
   console.log("Server is running on port 8800...");
 });

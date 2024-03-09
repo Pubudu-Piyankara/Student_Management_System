@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useEffect } from "react";
-import Label from "../components/Label/Label";
-import Input from "../components/Input/Input";
-import Button from "../components/Button/Button";
+import Label from "../../components/Label/Label";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { StudentInterface } from "../../types/Types";
 
 type Props = {
   handleUpdate: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -18,7 +19,7 @@ const Update = (props: Props) => {
   const studentId = location.pathname.split("/")[2]; //get the student id from the url
 
   //-----------------get & fetch student details(before update) by id-------------------
-  const [getStudent, setGetStudent] = useState([]);
+  const [selectStudent, setSelectStudent] = useState([]);
 
   useEffect(() => {
     const fetchStudent = async () => {
@@ -26,7 +27,7 @@ const Update = (props: Props) => {
         const res = await axios.get(
           `http://localhost:8800/student/${studentId}`
         );
-        setGetStudent(res.data);
+        setSelectStudent(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -74,7 +75,7 @@ const Update = (props: Props) => {
       <div className="grid grid-cols-4">
         <div //---------------------------------------------->display student details before update
         >
-          {getStudent.map((student: any) => (
+          {selectStudent.map((student: StudentInterface) => (
             <div>
               <p>{student.studentFullName}</p>
               <p>{student.address}</p>
@@ -159,6 +160,7 @@ const Update = (props: Props) => {
             onchange={handleChange}
             name="motherProfession"
           />
+
           <Input
             label="Father's Name"
             type="text"

@@ -1,4 +1,5 @@
 export interface StudentInterface {
+    
     id: number,
     studentFullName: string,
     address: string,
@@ -12,12 +13,12 @@ export interface StudentInterface {
     guardianName: string,
     guardianAddress: string,
     guardianContact: number,
-    extraCurricularActivities: string,
+    extraActivities: string,
 }
 
 
 export interface TeacherInterface{
-    id:number,
+    idTeacher:number,
     teacherName: string,
     teacherIndex: number,
     contactNumber: number,
