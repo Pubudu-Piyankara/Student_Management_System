@@ -12,6 +12,18 @@ const UpadateTeacher = (props: Props) => {
   const [selectTeacher, setSelectTeacher] = useState([]);
   const location = useLocation();
   const teacherId = location.pathname.split("/")[2];
+  const [newTeacherData, setNewTeacherData] = useState<TeacherInterface>({
+   
+    teacherName: "",
+    teacherIndex: 0,
+    contactNumber: 0,
+    address: "",
+    age: 0,
+    qualification: "",
+    tic: "",
+    idTeacher: 0
+  });
+
 
   useEffect(() => {
     const fetchTeacher = async () => {
@@ -28,18 +40,25 @@ const UpadateTeacher = (props: Props) => {
   }, [teacherId]);
 
   const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setSelectTeacher((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setNewTeacherData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(selectTeacher);
+    try {
+      axios.put(`http://localhost:8800/teachers/${teacherId}`, newTeacherData);
+      console.log("Upadate Successfully")
+      window.location.reload();
+    } catch (error) {
+      console.log(error)
+    }
   };
   return (
     <div className="grid grid-cols-3">
       <div className="ml-5">
         {selectTeacher.map((teacher: TeacherInterface) => (
           <div key={teacher.idTeacher} 
-          className="py8"
+          className=""
           >
             <p className="pt-4">{teacher.teacherName}</p>
             <p className="pt-10">{teacher.teacherIndex}</p>

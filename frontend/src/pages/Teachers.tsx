@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+ import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
 import NavBar from "../components/NavBar/NavBar";
 import { Tabs } from "flowbite-react";
 import { TeacherInterface } from "../types/Types";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Label from "../components/Label/Label";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
@@ -14,7 +14,10 @@ type Props = {};
 const Teachers = (props: Props) => {
   const [teachers, setTeachers] = useState([] as TeacherInterface[]);
   const [newTeacherData, setNewTeacherData] = useState({} as TeacherInterface);
+  const location = useLocation();
+  const teacherId = location.pathname.split("/")[2];
 
+  //------------------------------------------------------Get Teacher------------------------------------------------------
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
@@ -29,10 +32,7 @@ const Teachers = (props: Props) => {
   }, []);
   console.log(teachers);
 
-  const handleDelete = async (teacherIndex: number) => {
-    console.log(teacherIndex);
-  };
-
+//------------------------------------------------------Update Teacher------------------------------------------------------
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTeacherData(
       (prev: TeacherInterface) => ({
@@ -53,6 +53,20 @@ const Teachers = (props: Props) => {
       console.log(err);
     }
   };
+
+
+//------------------------------------------------------Delete Teacher------------------------------------------------------
+  const handleDelete = async (idTeacher: number) => {
+    
+    try {
+      await axios.delete(`http://localhost:8800/teachers/${idTeacher}`);
+      window.location.reload();
+      console.log("Delete Successfully");      
+    } catch (error) {
+      console.log("Error in delete teacher",  error);
+    }
+  };
+
 
   return (
     <div className="grid grid-cols-5 justify-between">
@@ -121,7 +135,7 @@ const Teachers = (props: Props) => {
                             </button>
                             <button
                               className="ml-2 text-red-600 hover:text-red-900"
-                              onClick={() => handleDelete(teacher.teacherIndex)}
+                              onClick={() => handleDelete(teacher.idTeacher)}
                             >
                               Delete
                             </button>
