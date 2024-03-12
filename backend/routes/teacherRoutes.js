@@ -6,7 +6,7 @@ router.get('/', teachersController.getAllTeachers);
 router.post('/', teachersController.addTeacher);
 router.get('/:idTeacher', teachersController.getTeacher);
 router.put('/:idTeacher', teachersController.updateTeacher);
-router.delete('/:idTeacher', teachersController.deleteTeacher);
+router.delete('/:teacherIndex', teachersController.deleteTeacher);
 
 
 export default router;

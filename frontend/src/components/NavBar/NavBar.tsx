@@ -11,10 +11,8 @@ const NavBar = ({ handleSearch }: Props) => {
   const handleClick = () => {};
 
   return (
-    <div className="flex flex-row mr-auto justify-between bg-white-300  bg-slate-50 px-5 py-4 sm: ">
-      <div className="w-32 sm:w-84">
-        {" "}
-        
+    <div className="flex flex-row mr-auto w-full justify-between bg-white-300  bg-slate-100 px-5 py-4 sm:min-w-fit ">
+      <div className="flex items-center">
         <Input
           label=""
           type="text"

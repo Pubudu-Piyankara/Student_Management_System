@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
 import NavBar from "../components/NavBar/NavBar";
 import CardComponent from "../components/CardComponent/CardComponent";
 import student from "../assets/student.svg";
+import axios from "axios";
 
 type Props = {};
 
 const Dashboard = (props: Props) => {
+  const [studentCount, setStudentCount] = useState(0);
+  useEffect(() => {
+    const fetchStudentCount = async () => {
+      try {
+        const res = await axios.get("http://localhost:8800/student/count");
+        setStudentCount(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchStudentCount();
+  }, []);
+
+  console.log("where is my count ", studentCount);
   return (
     <div className="flex flex-row sm:flex overflow-visible ">
       <div className="place-items-start align-top items-center">
@@ -17,11 +32,24 @@ const Dashboard = (props: Props) => {
           <NavBar handleSearch={(e) => console.log(e.target.value)} />
         </div>
 
-        <div>
+        <div className="px-2">
+          <p> {}</p>
           <div className="gap-3 justify-center lg:grid grid-flow-col grid-cols-3 x-2 py-2 ">
+            {/* {studentCount.map((student: any) => {
+              return (
+                <CardComponent
+                  title={student.name}
+                  description={`Student Count : ${student.count}`}
+                  imgAlt="Card Image"
+                  imgSrc={student}
+                />
+              );
+
+            },
+            )} */}
             <CardComponent
               title="Students"
-              description="23"
+              description={`Student Count : ${studentCount}`}
               imgAlt="Card Image"
               imgSrc={student}
             />
@@ -41,7 +69,7 @@ const Dashboard = (props: Props) => {
         </div>
 
         <div>
-          <p>jdshfjhdskj fdskjn</p>
+          <p></p>
         </div>
       </div>
     </div>

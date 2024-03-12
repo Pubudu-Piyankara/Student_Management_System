@@ -2,7 +2,7 @@ import { Card } from "flowbite-react";
 import React from "react";
 
 
-type Props = { title: String; description: String; imgAlt: any; imgSrc: any };
+type Props = { title: String; description: any; imgAlt: any; imgSrc: any };
 
 const CardComponent = ({ title, description, imgAlt, imgSrc }: Props) => {
   return (

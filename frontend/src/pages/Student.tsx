@@ -100,22 +100,18 @@ const Student = (props: Props) => {
   
 
   return (
-    <div className="grid grid-cols-5 justify-between">
-      <div className=" h-screen w-64 shadow">
+    <div className="flex flex-row sm:flex overflow-visible">
+      <div className=" place-items-start align-top items-center">
         <SideBar />
       </div>
 
-      <div className="col-span-4 ">
+      <div className="w-full left-84 max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl xl:max-w-screen-3xl ">
         <div>
           <NavBar handleSearch={handleSearch} />
         </div>
-        <h1 className="text-2xl py-4">Students </h1>
+        <h1 className="text-2xl  px-2 py-4">Students </h1>
 
-        <div>
-          
-        </div>
-
-        <div className="">
+        <div className="px-2">
           <div>
             <Tabs>
               <Tabs.Item  //--------------List of all students----------------

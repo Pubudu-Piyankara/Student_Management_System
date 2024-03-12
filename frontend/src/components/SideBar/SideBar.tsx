@@ -30,7 +30,7 @@ function SideBar() {
       <div className="grid grid-flow-col  overflow-hidden h-full">
         <section className={`flex gap-6 `}>
           <div
-            className={`bg-[#e7e7e7] min-h-screen ${
+            className={`bg-slate-100 min-h-screen ${
               open ? "w-72" : "w-16"
             } duration-500 text-black-100 px-4`}
           >
@@ -48,7 +48,7 @@ function SideBar() {
                   key={i}
                   className={` ${
                     menu?.margin && "mt-5"
-                  } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-100 rounded-md`}
+                  } group flex items-center text-sm border rounded-xl gap-4 font-medium p-2 hover:bg-blue-200 hover:text-blue-500`}
                 >
                   <div>{React.createElement(menu?.icon, { size: "20" })}</div>
                   <h2

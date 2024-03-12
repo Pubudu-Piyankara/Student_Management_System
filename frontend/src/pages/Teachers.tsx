@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar/NavBar";
 import { Tabs } from "flowbite-react";
 import { TeacherInterface } from "../types/Types";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Label from "../components/Label/Label";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
@@ -14,8 +14,6 @@ type Props = {};
 const Teachers = (props: Props) => {
   const [teachers, setTeachers] = useState([] as TeacherInterface[]);
   const [newTeacherData, setNewTeacherData] = useState({} as TeacherInterface);
-  const location = useLocation();
-  const teacherId = location.pathname.split("/")[2];
 
   //------------------------------------------------------Get Teacher------------------------------------------------------
   useEffect(() => {
@@ -56,10 +54,10 @@ const Teachers = (props: Props) => {
 
 
 //------------------------------------------------------Delete Teacher------------------------------------------------------
-  const handleDelete = async (idTeacher: number) => {
+  const handleDelete = async (teacherIndex: number) => {
     
     try {
-      await axios.delete(`http://localhost:8800/teachers/${idTeacher}`);
+      await axios.delete(`http://localhost:8800/teachers/${teacherIndex}`);
       window.location.reload();
       console.log("Delete Successfully");      
     } catch (error) {
@@ -69,17 +67,17 @@ const Teachers = (props: Props) => {
 
 
   return (
-    <div className="grid grid-cols-5 justify-between">
-      <div>
+    <div className="flex flex-row sm:flex overflow-visible">
+      <div className=" place-items-start align-top items-center">
         <SideBar />
       </div>
 
-      <div className="col-span-4 ">
+      <div className="w-full left-84 max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl xl:max-w-screen-3xl ">
         <div>
           <NavBar handleSearch={(e) => console.log(e.target.value)} />
         </div>
-        <h1 className="text-2xl py-4">Teachers </h1>
-        <div>
+        <h1 className="text-2xl px-2 py-4">Teachers </h1>
+        <div className="px-2">
           <div>
             <Tabs>
               <Tabs.Item title="All Teachers">
@@ -126,7 +124,7 @@ const Teachers = (props: Props) => {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text text-sm font-medium mr-4">
-                            <button className="text-indigo-600 hover:text-indigo-900">
+                            <button className="text-indigo-600  border px-4 rounded-xl bg-blue-200 hover:text-indigo-900">
                               <Link
                                 to={`/updateTeacher/${teacher.idTeacher}`} //--------------Edit student details----------------
                               >
@@ -134,8 +132,8 @@ const Teachers = (props: Props) => {
                               </Link>
                             </button>
                             <button
-                              className="ml-2 text-red-600 hover:text-red-900"
-                              onClick={() => handleDelete(teacher.idTeacher)}
+                              className="ml-4  border px-4 rounded-xl bg-red-200 text-red-600 hover:text-red-900"
+                              onClick={() => handleDelete(teacher.teacherIndex)}
                             >
                               Delete
                             </button>

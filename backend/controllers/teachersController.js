@@ -36,17 +36,18 @@ const getTeacher = (req, res) => {
   });
 };
 const updateTeacher = (req, res) => {
+  const id = req.params.idTeacher;
   const q =
-    "UPDATE teachers SET teacherName = ?, contactNumber = ?, address = ?, age = ?, qualification = ?, tic = ? WHERE idTeacher = ?";
+    "UPDATE teachers SET teacherName = ?,teacherIndex = ?, contactNumber = ?, address = ?, age = ?, qualification = ?, tic = ? WHERE idTeacher = ?";
   const values = [
     req.body.teacherName,
+    req.body.teacherIndex,
     req.body.contactNumber,
     req.body.address,
     req.body.age,
     req.body.qualification,
     req.body.tic,
-    req.body.teacherIndex,
-    req.params.idTeacher,
+    id,
   ];
   db.query(q, values, (err, result) => {
     if (err) return res.status(500).json(err);
@@ -56,8 +57,8 @@ const updateTeacher = (req, res) => {
   });
 };
 const deleteTeacher = (req, res) => {
-  const q = "DELETE FROM teachers WHERE idTeacher = ?";
-  db.query(q, req.params.idTeacher, (err, result) => {
+  const q = "DELETE FROM teachers WHERE teacherIndex = ?";
+  db.query(q, req.params.teacherIndex, (err, result) => {
     if (err) return res.status(500).json(err);
     return res
       .status(200)

@@ -89,10 +89,21 @@ const getStudent = (req, res) => {
   });
 }
 
+
+const getStudentCount = (req, res) => {
+    const q = "SELECT COUNT(*) as studentCount FROM students ";
+    
+    db.query(q, (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json(result.studentCount);
+    });
+}
+
 export default {
     getAllStudents,
     addStudent,
     updateStudent,
     deleteStudent,
-    getStudent
+    getStudent,
+    getStudentCount
 }

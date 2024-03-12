@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TeacherInterface } from "../../types/Types";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Label from "../../components/Label/Label";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
@@ -9,10 +9,11 @@ import Button from "../../components/Button/Button";
 type Props = {};
 
 const UpadateTeacher = (props: Props) => {
+  const navigate = useNavigate();
   const [selectTeacher, setSelectTeacher] = useState([]);
   const location = useLocation();
   const teacherId = location.pathname.split("/")[2];
-  const [newTeacherData, setNewTeacherData] = useState<TeacherInterface>({
+  const [newTeacherData, setNewTeacherData] = useState({
    
     teacherName: "",
     teacherIndex: 0,
@@ -21,7 +22,7 @@ const UpadateTeacher = (props: Props) => {
     age: 0,
     qualification: "",
     tic: "",
-    idTeacher: 0
+    
   });
 
 
@@ -40,7 +41,8 @@ const UpadateTeacher = (props: Props) => {
   }, [teacherId]);
 
   const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTeacherData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const value = e.target.name === 'contactNumber' || e.target.name === 'age' || e.target.name === 'teacherIndex' ? parseInt(e.target.value) : e.target.value;
+  setNewTeacherData((prev) => ({ ...prev, [e.target.name]: value }));
   };
 
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -48,6 +50,7 @@ const UpadateTeacher = (props: Props) => {
     try {
       axios.put(`http://localhost:8800/teachers/${teacherId}`, newTeacherData);
       console.log("Upadate Successfully")
+      navigate("/teachers");
       window.location.reload();
     } catch (error) {
       console.log(error)
