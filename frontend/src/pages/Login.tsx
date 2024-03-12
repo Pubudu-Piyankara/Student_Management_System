@@ -52,7 +52,7 @@ const Login = (props: Props) => {
               <Button text="Log In" onClick={()=>navigate(props.Login ? '/login': '/dashboard')} />
               
             </div>
-            <div className="mt-3 lg:mt-4 flex items-center">
+            <div className="mt-3 lg:mt-4 flex items-center sm:flex flex-col">
               <h1>Don't have an account? </h1>
               <p className='text-blue-400'> Please contact addministration</p>
             </div>

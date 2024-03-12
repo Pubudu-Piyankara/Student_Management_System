@@ -12,7 +12,7 @@ function SideBar() {
       setOpen(false);
     } else {
       setOpen(true);
-    }                                             
+    }
   };
 
   // Add event listener for window resizing
@@ -25,14 +25,13 @@ function SideBar() {
     };
   }, []);
 
-
   return (
     <>
-      <div className="grid grid-flow-col ">
+      <div className="grid grid-flow-col  overflow-hidden h-full">
         <section className={`flex gap-6 `}>
           <div
             className={`bg-[#e7e7e7] min-h-screen ${
-              open ? "w-64" : "w-16"
+              open ? "w-72" : "w-16"
             } duration-500 text-black-100 px-4`}
           >
             <div className="py-3 flex justify-end">

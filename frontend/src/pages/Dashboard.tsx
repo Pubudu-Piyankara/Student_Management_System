@@ -7,20 +7,18 @@ import student from "../assets/student.svg";
 type Props = {};
 
 const Dashboard = (props: Props) => {
-
-
   return (
-    <div className="grid grid-cols-5">
-      <div className="">
+    <div className="flex flex-row sm:flex overflow-visible ">
+      <div className="place-items-start align-top items-center">
         <SideBar />
       </div>
-
-      <div className="col-span-4 md:grid-flow-col">
-        <div className="flex-row">
-          <NavBar handleSearch={(e)=>console.log(e.target.value)}/>
+      <div className="w-full left-84 max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl xl:max-w-screen-3xl">
+        <div className="flex w-full justify-around gap-[500px] items-center">
+          <NavBar handleSearch={(e) => console.log(e.target.value)} />
         </div>
+
         <div>
-          <div className="gap-3 w-auto h-auto justify-center lg:grid grid-flow-col grid-cols-3 x-2 py-2 ">
+          <div className="gap-3 justify-center lg:grid grid-flow-col grid-cols-3 x-2 py-2 ">
             <CardComponent
               title="Students"
               description="23"

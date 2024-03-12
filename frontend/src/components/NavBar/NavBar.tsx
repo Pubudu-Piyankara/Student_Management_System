@@ -11,10 +11,10 @@ const NavBar = ({ handleSearch }: Props) => {
   const handleClick = () => {};
 
   return (
-    <div className="flex flex-row mr-auto lg:flex bg-white-300 justify-between bg-slate-50 px-5 py-4 w- sm:w-auto ">
-      <div className="lg: items-center w-72 md:">
+    <div className="flex flex-row mr-auto justify-between bg-white-300  bg-slate-50 px-5 py-4 sm: ">
+      <div className="w-32 sm:w-84">
         {" "}
-        {/* Adjust alignment for better responsiveness */}
+        
         <Input
           label=""
           type="text"
@@ -23,7 +23,7 @@ const NavBar = ({ handleSearch }: Props) => {
           name="search"
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center sm:justify-normal">
         {" "}
         {/* Adjust alignment for better responsiveness */}
         <IoNotificationsOutline className="mr-4" /> {/* Adjust spacing */}
