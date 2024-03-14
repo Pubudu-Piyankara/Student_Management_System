@@ -39,7 +39,7 @@ export const SidebarData = [
         margin:true
     },
     {
-        title:'Messages',
+        title:'Announcement',
         path:'/massages',
         icon:FiMessageSquare ,
         cName:'nav-text',

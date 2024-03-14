@@ -23,6 +23,7 @@ type Props = {
 const Student = (props: Props) => {
   const [students, setStudents] = useState( [] as StudentInterface[] );
   const [query, setQuery] = useState("");
+  const [studentCount, setStudentCount] = useState(0);
   const [newStudentData, setNewStudentData] = useState(
     {} as StudentInterface
   );
@@ -55,6 +56,8 @@ const Student = (props: Props) => {
       try {
         const res = await axios.get(`http://localhost:8800/student?searchQ=${query}`);
         setStudents(res.data);
+        const count = res.data.length;
+        setStudentCount(count);
       } catch (err) {
         console.log(err);
       }
@@ -63,7 +66,7 @@ const Student = (props: Props) => {
     if(query.length === 0 ) fetchStudents();
   }, [query]);
 
-  
+
 
   //--------------Add new student to the database----------------
   const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,6 +100,7 @@ const Student = (props: Props) => {
   };
   
  
+
   
 
   return (
@@ -111,7 +115,8 @@ const Student = (props: Props) => {
         </div>
         <h1 className="text-2xl  px-2 py-4">Students </h1>
 
-        <div className="px-2">
+        <div >
+        <p> {`Student Count : ${studentCount}`}</p>
           <div>
             <Tabs>
               <Tabs.Item  //--------------List of all students----------------

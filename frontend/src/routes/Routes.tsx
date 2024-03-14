@@ -7,10 +7,15 @@ import Teacher from "../pages/Teachers";
 import Administration from "../pages/Administration";
 import Messages from "../pages/Messages";
 import Profile from "../pages/Profile";
-import Details from "../pages/Details";
-import Search from "../pages/Search";
+import Details from "../pages/detailsPages/Details";
 import UpdateStudent from "../pages/updatePages/UpdateStudent";
 import UpdateTeacher from "../pages/updatePages/UpadateTeacher";
+import AdminStaffDetail from "../pages/detailsPages/AdminStaffDetail";
+import AnnouncementDetail from "../pages/detailsPages/AnnouncementDetail";
+import DetailsTeacher from "../pages/detailsPages/DetailsTeacher";
+import UpdateAdmin from "../pages/updatePages/UpdateAdmin";
+
+
 
 export const router = createBrowserRouter([
     {
@@ -67,14 +72,28 @@ export const router = createBrowserRouter([
     
     },
     {
+
+        path: "/updateAdmin/:idStaff",
+        element: <UpdateAdmin />,
+    },
+
+    {
         path:"/details/:id",
         element: <Details />,
     },
+   
     {
-        path: "/search",
-        element: <Search />,
+        path: "/adminDetail/:idStaff",
+        element: <AdminStaffDetail />,
     },
-
+    {
+        path: "/msgDetail/:idMessage",
+        element: <AnnouncementDetail />,
+    },
+    {
+        path: "/teacherDetail/:idTeacher",
+        element: <DetailsTeacher />,
+    }
 ])
 
 

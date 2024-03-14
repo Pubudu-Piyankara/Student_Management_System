@@ -14,13 +14,16 @@ type Props = {};
 const Teachers = (props: Props) => {
   const [teachers, setTeachers] = useState([] as TeacherInterface[]);
   const [newTeacherData, setNewTeacherData] = useState({} as TeacherInterface);
+  const [teacherCount, setTeacherCount] = useState(0);
 
   //------------------------------------------------------Get Teacher------------------------------------------------------
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
         const res = await axios.get("http://localhost:8800/teachers");
+        const count = res.data.length;
         setTeachers(res.data);
+        setTeacherCount(count);
         console.log(res.data);
       } catch (err) {
         console.log(err);
@@ -78,6 +81,7 @@ const Teachers = (props: Props) => {
         </div>
         <h1 className="text-2xl px-2 py-4">Teachers </h1>
         <div className="px-2">
+          <p>{`Total Teachers : ${teacherCount} `}</p>
           <div>
             <Tabs>
               <Tabs.Item title="All Teachers">
@@ -106,7 +110,9 @@ const Teachers = (props: Props) => {
                       {teachers.map((teacher: TeacherInterface) => (
                         <tr key={teacher.idTeacher}>
                           <td className="px-6 py-4 whitespace-nowrap hover:underline cursor-pointer ">
+                            <Link to={`/teacherDetail/${teacher.idTeacher}`}>
                             {teacher.teacherName}
+                            </Link>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
@@ -124,7 +130,7 @@ const Teachers = (props: Props) => {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text text-sm font-medium mr-4">
-                            <button className="text-indigo-600  border px-4 rounded-xl bg-blue-200 hover:text-indigo-900">
+                            <button className="text-indigo-600 px-4 hover:text-indigo-900">
                               <Link
                                 to={`/updateTeacher/${teacher.idTeacher}`} //--------------Edit student details----------------
                               >
@@ -132,7 +138,7 @@ const Teachers = (props: Props) => {
                               </Link>
                             </button>
                             <button
-                              className="ml-4  border px-4 rounded-xl bg-red-200 text-red-600 hover:text-red-900"
+                              className="ml-4 px-4 text-red-600 hover:text-red-900"
                               onClick={() => handleDelete(teacher.teacherIndex)}
                             >
                               Delete

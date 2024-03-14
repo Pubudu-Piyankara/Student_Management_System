@@ -55,7 +55,7 @@ const updateStudent = (req, res) => {
     req.body.guardianContact,
     req.body.extraActivities,
     id,
-  ];
+  ]; 
 
   db.query(q, values, (err, result) => {
     if (err) {
@@ -91,11 +91,12 @@ const getStudent = (req, res) => {
 
 
 const getStudentCount = (req, res) => {
-    const q = "SELECT COUNT(*) as studentCount FROM students ";
-    
+  const q = "SELECT COUNT(*) as StudentCount FROM students";
+
     db.query(q, (err, result) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json(result.studentCount);
+        const studentCount = result[0].StudentCount;
+        return res.status(200).json({studentCount });
     });
 }
 

@@ -12,10 +12,10 @@ const CardComponent = ({ title, description, imgAlt, imgSrc }: Props) => {
         imgAlt={imgAlt}
         imgSrc={imgSrc}
       >
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
+        <h5 className="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-700">
           {title}
         </h5>
-        <p className="font-normal text-justify px-4 py-2 text-gray-700 dark:text-gray-800">
+        <p className="font-normal text-justify px-4 py-2 text-gray-500 dark:text-gray-800">
           {description}
         </p>
       </Card>

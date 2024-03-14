@@ -7,6 +7,6 @@ router.post('/', studentController.addStudent);
 router.get('/:id', studentController.getStudent);
 router.put('/:id', studentController.updateStudent);
 router.delete('/:indexNumber', studentController.deleteStudent);
-router.get('/count', studentController.getStudentCount);
+
 
 export default router;

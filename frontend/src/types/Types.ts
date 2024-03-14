@@ -18,6 +18,7 @@ export interface StudentInterface {
 
 
 export interface TeacherInterface{
+    
     idTeacher:number,
     teacherName: string,
     teacherIndex: number,
@@ -27,4 +28,26 @@ export interface TeacherInterface{
     qualification: string,
     tic: string,
 
+}
+
+export interface AnnouncementInterface{
+    idMessage :number,
+    title: string,
+    msgDescription: string,
+    content: string,
+}
+
+export interface UserInterface{
+    idUser: number,
+    userName: string,
+    password: string,
+    role: string,
+}
+export interface StaffInterface{
+    idStaff: number,
+    empName: string,
+    empPosition: string,
+    empContacts: number,
+    empAdddress: string,
+    empAge: number,
 }
