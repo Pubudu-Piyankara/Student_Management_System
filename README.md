@@ -13,7 +13,7 @@ The Student Management System is a web application built with Node.js, React, Ex
 ## Installation
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/student-management-system.git
+   git clone https://github.com/Pubudu-Piyankara/student-management-system.git
    ```
 2. Navigate to the project directory:
    ```
