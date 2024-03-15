@@ -68,6 +68,4 @@ This project is licensed under the [MIT License](LICENSE).
 ![Finished App](https://github.com/Pubudu-Piyankara/student_management_system/blob/main/assets/1.jpeg)
 ![Finished App](https://github.com/Pubudu-Piyankara/student_management_system/blob/main/assets/3.jpeg)
 
----
 
-You can customize this template further by adding specific instructions, details, or sections according to your project's needs. Make sure to replace placeholders like `your-username` with your actual GitHub username or organization name.
