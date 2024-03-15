@@ -13,13 +13,15 @@ type Props = {};
 
 const Administration = (props: Props) => {
   const [staff, setStaff] = useState([] as StaffInterface[]);
+  const [staffCount, setStaffCount] = useState(0);
 
   useEffect(() => {
     const fetchStaff = async () => {
       try {
         const response = await axios.get("http://localhost:8800/admin");
-
+        const count = response.data.length;
         setStaff(response.data);
+        setStaffCount(count);
       } catch (error) {
         console.log(error, "error");
       }
@@ -31,7 +33,6 @@ const Administration = (props: Props) => {
     try {
       await axios.delete(`http://localhost:8800/admin/${idStaff}`);
       window.location.reload();
-
     } catch (error) {
       console.log(error, "error");
     }
@@ -70,7 +71,13 @@ const Administration = (props: Props) => {
             }}
           />
         </div>
-        <h1 className="text-2xl  px-2 py-4">Admin </h1>
+        <div className="flex flex-row justify-between px-4">
+          <h1 className="text-2xl  px-2 py-4">Administration Staff </h1>
+          <p className="mt-5 bg-yellow-200 py-2 px-4 border rounded-full">
+            {" "}
+            {`Total No of Staff Members : ${staffCount}`}
+          </p>
+        </div>
         <Tabs>
           <Tabs.Item title=" Admin Staff" active>
             <div className="px-2 py-4">
@@ -101,7 +108,6 @@ const Administration = (props: Props) => {
                         <Link to={`/adminDetail/${stf.idStaff}`}>
                           {stf.empName}
                         </Link>
-                        
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {stf.empPosition}
@@ -185,15 +191,11 @@ const Administration = (props: Props) => {
                   type="text"
                 />
               </div>
-              
+
               <Button onClick={handleUpdate} text="Update" />
             </div>
           </Tabs.Item>
-          <Tabs.Item title="Announcement">
-            <div className="px-2 py-4">
-              <h1>Announcement</h1>
-            </div>
-          </Tabs.Item>
+
           <Tabs.Item title="Users">
             <div className="px-2 py-4">
               <h1>Users</h1>

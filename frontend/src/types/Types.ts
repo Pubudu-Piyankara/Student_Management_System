@@ -35,6 +35,8 @@ export interface AnnouncementInterface{
     title: string,
     msgDescription: string,
     content: string,
+    publishDate: string,
+    expireDate: string,
 }
 
 export interface UserInterface{

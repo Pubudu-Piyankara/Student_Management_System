@@ -8,7 +8,7 @@ const CardComponent = ({ title, description, imgAlt, imgSrc }: Props) => {
   return (
     <div>
       <Card
-        className="max-w-sm rounded-md bg-gray-50 hover:bg-blue-100"
+        className="max-w-sm rounded-md bg-gray-50 hover:bg-blue-50"
         imgAlt={imgAlt}
         imgSrc={imgSrc}
       >

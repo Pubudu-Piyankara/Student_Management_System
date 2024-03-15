@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
-import NavBar from "../components/NavBar/NavBar";
 import CardComponent from "../components/CardComponent/CardComponent";
 import students from "../assets/students.svg";
 import teacher from "../assets/teacher.svg";
@@ -8,6 +7,7 @@ import staff from "../assets/staff.svg";
 import axios from "axios";
 import { AnnouncementInterface } from "../types/Types";
 import SampleCard from "../components/CardComponent/SampleCard";
+import DetailNavBar from "../components/NavBar/DetailNavBar";
 
 type Props = {};
 
@@ -78,7 +78,7 @@ const Dashboard = (props: Props) => {
       </div>
       <div className="w-full left-84 max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl xl:max-w-screen-3xl">
         <div className="flex w-full justify-around gap-[500px] items-center">
-          <NavBar handleSearch={(e) => console.log(e.target.value)} />
+          <DetailNavBar  />
         </div>
 
         <section className="px-5 py-4">
@@ -106,7 +106,7 @@ const Dashboard = (props: Props) => {
        <hr className="h-5"></hr>
         <section className="px-5 py-4">
           <h1 className="text-2xl py-4">Announcement </h1>
-          <div className="px-2">
+          <div className="px-2 grid grid-cols-3">
           {announcement.map((msg: AnnouncementInterface) => (
             <div key={msg.idMessage} >
               <SampleCard title={msg.title} description={msg.msgDescription} id={msg.idMessage}/>

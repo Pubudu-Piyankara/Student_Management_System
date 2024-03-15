@@ -55,9 +55,9 @@ const UpdateAdmin = (props: Props) => {
             {staffDetail.map((staff: StaffInterface) => (
                 <div key={staff.idStaff}>
                     <h1>{staff.empName}</h1>
-                    <p>{staff.empAdddress}</p>
                     <p>{staff.empPosition}</p>
                     <p>{staff.empContacts}</p>
+                    <p>{staff.empAdddress}</p>
                     <p>{staff.empAge}</p> 
                     </div>
             ))}
@@ -91,7 +91,7 @@ const UpdateAdmin = (props: Props) => {
             placeholder="Enter Contact Number"
             onchange={handelChange}
             name="empContacts"
-            type="text"
+            type="number"
           />
         </div>
         <div className="flex flex-row justify-between py-4">
@@ -111,7 +111,7 @@ const UpdateAdmin = (props: Props) => {
             placeholder="Enter Age"
             onchange={handelChange}
             name="empAge"
-            type="text"
+            type="number"
           />
         </div>
         

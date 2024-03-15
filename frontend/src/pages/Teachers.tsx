@@ -79,9 +79,13 @@ const Teachers = (props: Props) => {
         <div>
           <NavBar handleSearch={(e) => console.log(e.target.value)} />
         </div>
+        <div className="flex flex-row justify-between px-4">
         <h1 className="text-2xl px-2 py-4">Teachers </h1>
+        <p className="mt-5 bg-yellow-200 py-2 px-4 border rounded-full">{`Total Teachers : ${teacherCount} `}</p>
+        </div>
+        
         <div className="px-2">
-          <p>{`Total Teachers : ${teacherCount} `}</p>
+          
           <div>
             <Tabs>
               <Tabs.Item title="All Teachers">

@@ -6,11 +6,11 @@ type Props = {title: string, description: string, id: number}
 const SampleCard = ({title, description,id}: Props) => {
     return (
         <div>
-          <div className=" px-3 py-5 w-80 bg-white border border-gray-200 rounded-lg shadow  ">
+          <div className=" px-3 py-5 w-80 bg-white border border-gray-200 rounded-lg shadow  hover:bg-blue-50">
             <div className="w-10 h-10 text-gray-500 dark:text-gray-400 mb-3"
               aria-hidden="true"
             >
-            <MdAnnouncement className='w-10 h-10' />
+            <MdAnnouncement className='w-10 h-10 text-green-400' />
             </div>
             
             <a href={`msgDetail/${id}`}>

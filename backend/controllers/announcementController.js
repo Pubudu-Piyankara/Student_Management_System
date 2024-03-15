@@ -10,11 +10,14 @@ import db from "../Database.js";
 };
 
  const putAnnouncement = async (req, res) => {
-   const q = "INSERT INTO announcement (`title`, `msgDescription`, `content`) VALUES (?,?,?)";
+   const q = "INSERT INTO announcement (`title`, `msgDescription`, `content`, `publishDate`,`expireDate`) VALUES (?,?,?,?,?)";
     const values = [
       req.body.title,
       req.body.msgDescription,
       req.body.content,
+      req.body.publishDate,
+      req.body.expireDate
+
     ];
     db.query(q, values, (err, result) => {
       if (err) return res.status(500).json(err);
@@ -35,11 +38,13 @@ import db from "../Database.js";
 
      const updateAnnouncement = async (req, res) => {
         const id = req.params.idMessage;
-        const q = "UPDATE announcement SET title = ?, msgDescription = ?, content = ? WHERE idMessage = ?";
+        const q = "UPDATE announcement SET title = ?, msgDescription = ?, content = ?, publishDate=?, expireDate=? WHERE idMessage = ?";
         const values = [
           req.body.title,
           req.body.msgDescription,
           req.body.content,
+          req.body.publishDate,
+          req.body.expireDate,
           id,
         ];
         db.query(q, values, (err, result) => {

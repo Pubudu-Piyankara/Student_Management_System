@@ -6,47 +6,44 @@ import NavBar from "../components/NavBar/NavBar";
 import { Tabs } from "flowbite-react";
 import { BsPersonFillAdd } from "react-icons/bs";
 import Input from "../components/Input/Input";
-import Button from "../components/Button/Button";
 import Label from "../components/Label/Label";
 import { FaListAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import  {StudentInterface} from "../types/Types";
+import { StudentInterface } from "../types/Types";
 
 type Props = {
   addText: string;
   on: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
 };
 
-
-
 const Student = (props: Props) => {
-  const [students, setStudents] = useState( [] as StudentInterface[] );
+  const [students, setStudents] = useState([] as StudentInterface[]);
   const [query, setQuery] = useState("");
   const [studentCount, setStudentCount] = useState(0);
-  const [newStudentData, setNewStudentData] = useState(
-    {} as StudentInterface
-  );
+  const [newStudentData, setNewStudentData] = useState({} as StudentInterface);
 
   //---------------search---
-  const handleSearch = (e:ChangeEvent<HTMLInputElement>  ) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     setQuery(e.target.value);
-    
-  
-  const res = students.filter((student: StudentInterface) => {
+
+    const res = students.filter((student: StudentInterface) => {
       for (const key of Object.keys(student)) {
-          const value = student[key as keyof StudentInterface];
-          if (value && typeof value === 'string' && value.toLowerCase().includes(query)) {
-              return true; // If any property matches, return true
-          }
-          if (typeof value === 'number' && value.toString().includes(query)) {
-              return true; // If any number property matches, return true
-          }
+        const value = student[key as keyof StudentInterface];
+        if (
+          value &&
+          typeof value === "string" &&
+          value.toLowerCase().includes(query)
+        ) {
+          return true; // If any property matches, return true
+        }
+        if (typeof value === "number" && value.toString().includes(query)) {
+          return true; // If any number property matches, return true
+        }
       }
       return false; // If no property matches, return false
-  });
-  
+    });
+
     setStudents(res);
   };
 
@@ -54,7 +51,9 @@ const Student = (props: Props) => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/student?searchQ=${query}`);
+        const res = await axios.get(
+          `http://localhost:8800/student?searchQ=${query}`
+        );
         setStudents(res.data);
         const count = res.data.length;
         setStudentCount(count);
@@ -62,15 +61,16 @@ const Student = (props: Props) => {
         console.log(err);
       }
     };
-    
-    if(query.length === 0 ) fetchStudents();
+
+    if (query.length === 0) fetchStudents();
   }, [query]);
-
-
 
   //--------------Add new student to the database----------------
   const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewStudentData((prev: StudentInterface) => ({ ...prev, [e.target.name]: e.target.value }));
+    setNewStudentData((prev: StudentInterface) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   console.log(newStudentData);
@@ -98,10 +98,6 @@ const Student = (props: Props) => {
       console.log("cannot delete ", err);
     }
   };
-  
- 
-
-  
 
   return (
     <div className="flex flex-row sm:flex overflow-visible">
@@ -113,13 +109,17 @@ const Student = (props: Props) => {
         <div>
           <NavBar handleSearch={handleSearch} />
         </div>
+        <div className="flex flex-row justify-between px-4">
         <h1 className="text-2xl  px-2 py-4">Students </h1>
+        <p className="mt-5 bg-yellow-200 py-2 px-4 border rounded-full"> {`Total No of Students : ${studentCount}`}</p>
+        </div>
+        
 
-        <div >
-        <p> {`Student Count : ${studentCount}`}</p>
+        <div className="px-2">
+          
           <div>
             <Tabs>
-              <Tabs.Item  //--------------List of all students----------------
+              <Tabs.Item //--------------List of all students----------------
                 active
                 title="All Student List"
                 icon={FaListAlt}
@@ -149,10 +149,11 @@ const Student = (props: Props) => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       {students.map((student: StudentInterface) => (
                         <tr key={student.id}>
-                          <td  className="px-6 py-4 whitespace-nowrap hover:underline cursor-pointer"                          >
-                            <Link to={`/details/${student.id}`} //--------------Open student details----------------
+                          <td className="px-6 py-4 whitespace-nowrap hover:underline cursor-pointer">
+                            <Link
+                              to={`/details/${student.id}`} //--------------Open student details----------------
                             >
-                            {student.studentFullName } 
+                              {student.studentFullName}
                             </Link>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
@@ -165,10 +166,11 @@ const Student = (props: Props) => {
                             {student.dateOfBirth}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                            <button className="text-indigo-600 hover:text-indigo-900"                            >
-                              <Link to={`/updateStudent/${student.id}`}//--------------Edit student details---------------- 
-                              > 
-                                Edit 
+                            <button className="text-indigo-600 hover:text-indigo-900">
+                              <Link
+                                to={`/updateStudent/${student.id}`} //--------------Edit student details----------------
+                              >
+                                Edit
                               </Link>
                             </button>
                             <button
@@ -185,30 +187,19 @@ const Student = (props: Props) => {
                 </div>
               </Tabs.Item>
               <Tabs.Item //--------------Add new student to the database----------------
-              active title="Add New Student" icon={BsPersonFillAdd} id="add">
+                active
+                title="Add New Student"
+                icon={BsPersonFillAdd}
+                id="add"
+              >
                 Add{" "}
                 <span className="font-medium text-gray-800 dark:text-white">
                   {" new student "}
                 </span>{" "}
                 to the database.
-                <div className="grid grid-cols-4">
-                  <div className="">
+                <div className="flex flex-col ">
+                  <div className="flex flex-row justify-around py-2">
                     <Label label="Student Full Name" />
-                    <Label label="Address" />
-                    <Label label="Index Number" />
-                    <Label label="Date of Birth" />
-                    <Label label="Grade" />
-                    <Label label="Mother's Name" />
-                    <Label label="Mother's profession" />
-                    <Label label="Father's Name" />
-                    <Label label="Father's profession" />
-                    <Label label="Guardian's Name" />
-                    <Label label="Guardian's Address" />
-                    <Label label="Guardian's Contact" />
-                    <Label label="Extracurricular Activities" />
-
-                  </div>
-                  <div>
                     <Input
                       label={"Student Full Name"}
                       type={"text"}
@@ -216,7 +207,9 @@ const Student = (props: Props) => {
                       onchange={handelChange}
                       name={"studentFullName"}
                     />
-
+                  </div>
+                  <div className="flex flex-row justify-around py-2">
+                    <Label label="Address" />
                     <Input
                       label={"Address"}
                       type={"text"}
@@ -224,7 +217,9 @@ const Student = (props: Props) => {
                       onchange={handelChange}
                       name={"address"}
                     />
-
+                  </div>
+                  <div className="flex flex-row justify-evenly py-2">
+                    <Label label="Index Number" />
                     <Input
                       label={"Index Number"}
                       type={"number"}
@@ -232,7 +227,9 @@ const Student = (props: Props) => {
                       onchange={handelChange}
                       name={"indexNumber"}
                     />
-                    
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Date of Birth" />
                     <Input
                       label={"Date of Birth"}
                       type={"date"}
@@ -240,7 +237,9 @@ const Student = (props: Props) => {
                       onchange={handelChange}
                       name={"dateOfBirth"}
                     />
-
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Grade" />
                     <Input
                       label={"Grade"}
                       type={"number"}
@@ -248,22 +247,97 @@ const Student = (props: Props) => {
                       onchange={handelChange}
                       name={"grade"}
                     />
-
-                    <Input label="Mother's Name" type="text" placeholder="Enter Mother's Name" onchange={handelChange} name="motherName" />
-                    <Input label="Mother's profession" type="text" placeholder="Enter Mother's profession" onchange={handelChange} name="motherProfession" />
-                    <Input label="Father's Name" type="text" placeholder="Enter Father's Name" onchange={handelChange} name="fatherName" />
-                    <Input label="Father's profession" type="text" placeholder="Enter Father's profession" onchange={handelChange} name="fatherProfession" />
-                    <Input label="Guardian's Name" type="text" placeholder="Enter Guardian's Name" onchange={handelChange} name="guardianName" />
-                    <Input label="Guardian's Address" type="text" placeholder="Enter Guardian's Address" onchange={handelChange} name="guardianAddress" />
-                    <Input label="Guardian's Contact" type="number" placeholder="Enter Guardian's Contact" onchange={handelChange} name="guardianContact" />
-                    <Input label="Extracurricular Activities" type="text" placeholder="Enter Extracurricular Activities" onchange={handelChange} name="extraActivities" />
-                    
                   </div>
-
-                  <Button onClick={handleAdd} text={"Add"}></Button>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Mother's Name" />
+                    <Input
+                      label="Mother's Name"
+                      type="text"
+                      placeholder="Enter Mother's Name"
+                      onchange={handelChange}
+                      name="motherName"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Mother's profession" />
+                    <Input
+                      label="Mother's profession"
+                      type="text"
+                      placeholder="Enter Mother's profession"
+                      onchange={handelChange}
+                      name="motherProfession"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Father's Name" />
+                    <Input
+                      label="Father's Name"
+                      type="text"
+                      placeholder="Enter Father's Name"
+                      onchange={handelChange}
+                      name="fatherName"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Father's profession" />
+                    <Input
+                      label="Father's profession"
+                      type="text"
+                      placeholder="Enter Father's profession"
+                      onchange={handelChange}
+                      name="fatherProfession"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Guardian's Name" />
+                    <Input
+                      label="Guardian's Name"
+                      type="text"
+                      placeholder="Enter Guardian's Name"
+                      onchange={handelChange}
+                      name="guardianName"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Guardian's Address" />
+                    <Input
+                      label="Guardian's Address"
+                      type="text"
+                      placeholder="Enter Guardian's Address"
+                      onchange={handelChange}
+                      name="guardianAddress"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Guardian's Contact" />
+                    <Input
+                      label="Guardian's Contact"
+                      type="number"
+                      placeholder="Enter Guardian's Contact"
+                      onchange={handelChange}
+                      name="guardianContact"
+                    />
+                  </div>
+                  <div className="flex flex-row justify-evenly">
+                    <Label label="Extracurricular Activities" />
+                    <Input
+                      label="Extracurricular Activities"
+                      type="text"
+                      placeholder="Enter Extracurricular Activities"
+                      onchange={handelChange}
+                      name="extraActivities"
+                    />
+                  </div>
                 </div>
+                <div>
+                    <button
+                      className="bg-green-400 border rounded-full py-1 px-6 text-white font-semibold hover:bg-green-500 mt-4 underline"
+                      onClick={handleAdd}
+                    >
+                      Add Student
+                    </button>
+                  </div>
               </Tabs.Item>
-              
             </Tabs>
           </div>
         </div>
