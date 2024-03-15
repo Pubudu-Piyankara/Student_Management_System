@@ -64,9 +64,9 @@ This project is licensed under the [MIT License](LICENSE).
 - [MySQL](https://www.mysql.com/)
 
 ## Screenshots
-![Finished App](https://github.com/HGSChandeepa/Awesome-Places-App--04---Dp-Education/blob/main/assets/1.jpeg)
-![Finished App](https://github.com/HGSChandeepa/Awesome-Places-App--04---Dp-Education/blob/main/assets/2.jpeg)
-![Finished App](https://github.com/HGSChandeepa/Awesome-Places-App--04---Dp-Education/blob/main/assets/3.jpeg)
+![Finished App](https://github.com/Pubudu-Piyankara/student_management_system/blob/main/assets/2.jpeg)
+![Finished App](https://github.com/Pubudu-Piyankara/student_management_system/blob/main/assets/1.jpeg)
+![Finished App](https://github.com/Pubudu-Piyankara/student_management_system/blob/main/assets/3.jpeg)
 
 ---
 
