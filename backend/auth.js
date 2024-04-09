@@ -42,3 +42,4 @@ app.post("/register", async (req, res) => {
       res.status(401).json({ error: "Incorrect login details" });
     }
   });
+  
