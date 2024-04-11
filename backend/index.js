@@ -9,7 +9,7 @@ const app = express(); // create an express app
 
 app.use(express.json()); // make express app to understand json format
 // Update the origin to match your React app's origin
-app.use(cors({origin: "http://localhost:3000", }));
+app.use(cors({origin: "http://localhost:3001", }));
 
 //################################-STUDENTS-#####################
 app.use("/student", studentRoutes);
