@@ -18,7 +18,7 @@ const UpdateAdmin = (props: Props) => {
         const fetchStaff = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:8800/admin/${staffId}`
+                    `http://localhost:8000/admin/${staffId}`
                 );
                 setStaffDetail(res.data);
             } catch (err) {
@@ -40,7 +40,7 @@ const UpdateAdmin = (props: Props) => {
     ) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8800/admin/${staffId}`, newStaffData);
+            await axios.put(`http://localhost:8000/admin/${staffId}`, newStaffData);
             window.location.reload();
             navigate("/admin"	);
         } catch (err) {

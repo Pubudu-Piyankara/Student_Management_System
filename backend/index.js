@@ -9,7 +9,7 @@ const app = express(); // create an express app
 
 app.use(express.json()); // make express app to understand json format
 // Update the origin to match your React app's origin
-app.use(cors({origin: "http://localhost:3001", }));
+app.use(cors({origin: "http://localhost:3000", }));
 
 //################################-STUDENTS-#####################
 app.use("/student", studentRoutes);
@@ -19,6 +19,6 @@ app.use("/teachers", teacherRoutes);
 
 app.use("/announcement", announcementRoutes);
 app.use("/admin", adminStaffRoutes);
-app.listen(8800, () => {
-  console.log("Server is running on port 8800...");
+app.listen(8000, () => {
+  console.log("Server is running on port 8000...");
 });

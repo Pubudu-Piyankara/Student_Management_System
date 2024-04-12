@@ -17,7 +17,7 @@ const AnnouncementDetail = (props: Props) => {
     const fetchAnnouncement = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8800/announcement/${announcementId}`
+          `http://localhost:8000/announcement/${announcementId}`
         );
         setAnnouncementDetail(res.data);
       } catch (err) {

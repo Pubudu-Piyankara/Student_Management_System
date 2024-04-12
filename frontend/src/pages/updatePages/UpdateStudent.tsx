@@ -25,7 +25,7 @@ const Update = (props: Props) => {
     const fetchStudent = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8800/student/${studentId}`
+          `http://localhost:8000/student/${studentId}`
         );
         setSelectStudent(res.data);
       } catch (err) {
@@ -62,7 +62,7 @@ const Update = (props: Props) => {
   ) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8800/student/${studentId}`, student);
+      await axios.put(`http://localhost:8000/student/${studentId}`, student);
       navigate("/student");
       console.log("Update successful");
     } catch (err) {

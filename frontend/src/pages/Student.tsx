@@ -52,7 +52,7 @@ const Student = (props: Props) => {
     const fetchStudents = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8800/student?searchQ=${query}`
+          `http://localhost:8000/student?searchQ=${query}`
         );
         setStudents(res.data);
         const count = res.data.length;
@@ -80,7 +80,7 @@ const Student = (props: Props) => {
   ) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/student", newStudentData);
+      await axios.post("http://localhost:8000/student", newStudentData);
       window.location.reload();
       console.log("success");
     } catch (err) {
@@ -91,7 +91,7 @@ const Student = (props: Props) => {
   //--------------Delete a student from the database----------------
   const handleDelete = async (indexNumber: number) => {
     try {
-      await axios.delete(`http://localhost:8800/student/${indexNumber}`);
+      await axios.delete(`http://localhost:8000/student/${indexNumber}`);
       window.location.reload();
       console.log("Deleted successfully");
     } catch (err) {

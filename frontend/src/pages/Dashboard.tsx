@@ -19,7 +19,7 @@ const Dashboard = (props: Props) => {
   useEffect(() => {
     const fetchStudentCount = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/student");
+        const res = await axios.get("http://localhost:8000/student");
         const count = res.data.length;
         setStudentCount(count);
       } catch (error) {
@@ -32,7 +32,7 @@ const Dashboard = (props: Props) => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/teachers");
+        const res = await axios.get("http://localhost:8000/teachers");
         const count = res.data.length;
         setTeacherCount(count);
       } catch (err) {
@@ -45,7 +45,7 @@ const Dashboard = (props: Props) => {
   useEffect(() => {
     const fetchStaff = async () => {
       try {
-        const response = await axios.get("http://localhost:8800/admin");
+        const response = await axios.get("http://localhost:8000/admin");
         const count = response.data.length;
         setStaffCount(count);
       } catch (error) {
@@ -62,7 +62,7 @@ const Dashboard = (props: Props) => {
   useEffect(() => {
     const fetchAnnouncement = async () => {
       try {
-        const response = await axios.get("http://localhost:8800/announcement");
+        const response = await axios.get("http://localhost:8000/announcement");
 
         setAnnouncement(response.data);
       } catch (error) {

@@ -43,7 +43,7 @@ export interface UserInterface{
     idUser: number,
     userName: string,
     password: string,
-    role: string,
+    email: string,
 }
 export interface StaffInterface{
     idStaff: number,

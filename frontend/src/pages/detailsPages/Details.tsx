@@ -15,7 +15,7 @@ const Details = (props: Props) => {
         const fetchStudent = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:8800/student/${studentId}`
+                    `http://localhost:8000/student/${studentId}`
                 );
                 setStudentDetails(res.data);
             } catch (err) {

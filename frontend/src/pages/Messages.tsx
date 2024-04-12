@@ -22,7 +22,7 @@ const Messages = (props: Props) => {
   useEffect(() => {
     const fetchAnnouncement = async () => {
       try {
-        const response = await axios.get("http://localhost:8800/announcement");
+        const response = await axios.get("http://localhost:8000/announcement");
 
         setAnnouncement(response.data);
       } catch (error) {
@@ -33,7 +33,7 @@ const Messages = (props: Props) => {
   }, []);
   const handleDelete = async (idMessage: number) => {
     try {
-      await axios.delete(`http://localhost:8800/announcement/${idMessage}`);
+      await axios.delete(`http://localhost:8000/announcement/${idMessage}`);
       window.location.reload();
       navigate("/announcement");
     } catch (error) {
@@ -56,7 +56,7 @@ const Messages = (props: Props) => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8800/announcement",
+        "http://localhost:8000/announcement",
         newAnnouncementData
       );
       window.location.reload();

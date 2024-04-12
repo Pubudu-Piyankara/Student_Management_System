@@ -20,7 +20,7 @@ const Teachers = (props: Props) => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/teachers");
+        const res = await axios.get("http://localhost:8000/teachers");
         const count = res.data.length;
         setTeachers(res.data);
         setTeacherCount(count);
@@ -47,7 +47,7 @@ const Teachers = (props: Props) => {
   const handleAddTeacher = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/teachers", newTeacherData);
+      await axios.post("http://localhost:8000/teachers", newTeacherData);
       window.location.reload();
       console.log("Add Teacher");
     } catch (err) {
@@ -60,7 +60,7 @@ const Teachers = (props: Props) => {
   const handleDelete = async (teacherIndex: number) => {
     
     try {
-      await axios.delete(`http://localhost:8800/teachers/${teacherIndex}`);
+      await axios.delete(`http://localhost:8000/teachers/${teacherIndex}`);
       window.location.reload();
       console.log("Delete Successfully");      
     } catch (error) {

@@ -15,6 +15,7 @@ import AnnouncementDetail from "../pages/detailsPages/AnnouncementDetail";
 import DetailsTeacher from "../pages/detailsPages/DetailsTeacher";
 import UpdateAdmin from "../pages/updatePages/UpdateAdmin";
 import UpdateAnnouncement from "../pages/updatePages/UpdateAnnouncement";
+import User from "../pages/User";
 
 export const router = createBrowserRouter([
   {
@@ -109,4 +110,8 @@ export const router = createBrowserRouter([
     path: "/teacherDetail/:idTeacher",
     element: <DetailsTeacher />,
   },
+  {
+    path: "/user",
+    element: <User/>
+  }
 ]);

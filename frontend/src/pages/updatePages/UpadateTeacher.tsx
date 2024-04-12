@@ -30,7 +30,7 @@ const UpadateTeacher = (props: Props) => {
     const fetchTeacher = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8800/teachers/${teacherId}`
+          `http://localhost:8000/teachers/${teacherId}`
         );
         setSelectTeacher(res.data);
       } catch (error) {
@@ -48,7 +48,7 @@ const UpadateTeacher = (props: Props) => {
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(selectTeacher);
     try {
-      axios.put(`http://localhost:8800/teachers/${teacherId}`, newTeacherData);
+      axios.put(`http://localhost:8000/teachers/${teacherId}`, newTeacherData);
       console.log("Upadate Successfully")
       navigate("/teachers");
       window.location.reload();

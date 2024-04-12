@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
 import { CgProfile } from "react-icons/cg";
 import profilepic from "../assets/profilepic.jpg";
+import Button from "../components/Button/Button";
+import { Navigate } from "react-router-dom";
 
 type Props = {};
 
@@ -28,6 +30,8 @@ const Profile = (props: Props) => {
       console.log(error);
     }
   };
+
+  
 
   return (
     <div className="flex flex-row sm:flex overflow-visible">
@@ -56,6 +60,7 @@ const Profile = (props: Props) => {
                 logging in, you agree to our terms and conditions. Make sure to
                 review our GDPR compliance for data protection.
               </p>
+              <Button text="Create New User" onClick={()=>{Navigate("/user")}} />
               <hr className="mx-auto border-dashed rounded-md w-[1000%] lg:w-[1000px] mt-12 mb-5" />
               <label className="text-[#4743E0] lg:ml-0 font-semibold mb-2 ">
                 Change the Profile Details
