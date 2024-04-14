@@ -44,6 +44,7 @@ export interface UserInterface{
     userName: string,
     password: string,
     email: string,
+    role: string,
 }
 export interface StaffInterface{
     idStaff: number,

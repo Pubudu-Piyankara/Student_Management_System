@@ -58,18 +58,18 @@ const Administration = (props: Props) => {
     }
   };
 
-  const handleCreateUser = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:8000/user", newStaffData);
-      window.location.reload();
-      console.log("Add User");
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // const handleCreateUser = async (
+  //   e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  // ) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.post("http://localhost:8000/user", newStaffData);
+  //     window.location.reload();
+  //     console.log("Add User");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
   
   return (
     <div className="flex flex-row sm:flex overflow-visible">
@@ -210,42 +210,7 @@ const Administration = (props: Props) => {
           </Tabs.Item>
 
           <Tabs.Item title="Users">
-          <div className="col-span-2 mx-56 px-5">
-              <div className="flex flex-row justify-between text-right py-4">
-                <Label label="User Name" />
-                <Input
-                  label=""
-                  placeholder="Enter User Name"
-                  onchange={handelChange}
-                  name="empName"
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-row justify-between text-right py-4">
-                <Label label="Email" />
-                <Input
-                  label=""
-                  placeholder="Enter Email Address"
-                  onchange={handelChange}
-                  name="empPosition"
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-row justify-between text-left py-4">
-                <Label label="Password" />
-                <Input
-                  label=""
-                  placeholder="Create Password"
-                  onchange={handelChange}
-                  name="empContacts"
-                  type="Password"
-                />
-              </div>
-              
-              
-
-              <Button onClick={handleCreateUser} text="Create User" />
-            </div>
+          
           </Tabs.Item>
         </Tabs>
       </div>

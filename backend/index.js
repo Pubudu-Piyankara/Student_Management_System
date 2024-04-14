@@ -19,6 +19,7 @@ app.use("/teachers", teacherRoutes);
 
 app.use("/announcement", announcementRoutes);
 app.use("/admin", adminStaffRoutes);
+app.use("/user", userRoutes);
 app.listen(8000, () => {
   console.log("Server is running on port 8000...");
 });

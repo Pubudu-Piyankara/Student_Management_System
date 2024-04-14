@@ -6,6 +6,7 @@ function App() {
   return (
     <div>
     <NavBar handleSearch={(e)=>console.log(e.target.value)} />
+    
     <Outlet />
     </div>
   );

@@ -2,12 +2,12 @@ import db from "../Database.js";
 
 const addUser = (req, res) => {
   const q =
-    "INSERT INTO users (`userName`, `password`, `email`) VALUES (?,?,?)";
+    "INSERT INTO users (`userName`,`email`, `password`, `role` ) VALUES (?,?,?,?)";
 
   const values = [
-    req.body.username,
-    req.body.password,
+    req.body.userName,
     req.body.email,
+    req.body.password,
     req.body.role,
   ];
 
@@ -18,3 +18,5 @@ const addUser = (req, res) => {
       .json({ message: "Add user successfully", data: result });
   });
 }
+
+export default { addUser };
