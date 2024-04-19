@@ -19,4 +19,13 @@ const addUser = (req, res) => {
   });
 }
 
-export default { addUser };
+const getUser = (req, res) => {
+  const q = "SELECT * FROM users";
+  db.query(q, (err, result) => {
+    if (err) return res.status(500).json(err);
+    return res.status(200).json({ data: result });
+  });
+};
+
+export default { addUser
+  , getUser};

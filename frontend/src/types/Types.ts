@@ -40,7 +40,7 @@ export interface AnnouncementInterface{
 }
 
 export interface UserInterface{
-    idUser: number,
+    userId: number,
     userName: string,
     password: string,
     email: string,

@@ -4,12 +4,13 @@ import teacherRoutes from "./routes/teacherRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
 import announcementRoutes from "./routes/announcementRoutes.js";
 import adminStaffRoutes from "./routes/adminStaffRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express(); // create an express app
 
 app.use(express.json()); // make express app to understand json format
 // Update the origin to match your React app's origin
-app.use(cors({origin: "http://localhost:3000", }));
+app.use(cors({origin: "http://localhost:3000" }));
 
 //################################-STUDENTS-#####################
 app.use("/student", studentRoutes);
