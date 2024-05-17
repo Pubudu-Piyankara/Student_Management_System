@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar/SideBar";
 import NavBar from "../components/NavBar/NavBar";
 import { Tabs } from "flowbite-react";
-import { StaffInterface } from "../types/Types";
+import { StaffInterface, UserInterface } from "../types/Types";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Label from "../components/Label/Label";
@@ -70,7 +70,33 @@ const Administration = (props: Props) => {
   //     console.log(err);
   //   }
   // }
+
+  const [newUser, setNewUser] = useState({} as UserInterface);
+
+  const handelChangeUserInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setNewUser((prev: UserInterface) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+
   
+
+  const handleCreateUser = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent | HTMLSelectElement>
+  ) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8000/user", newUser);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="flex flex-row sm:flex overflow-visible">
       <div className=" place-items-start align-top items-center">
@@ -210,7 +236,54 @@ const Administration = (props: Props) => {
           </Tabs.Item>
 
           <Tabs.Item title="Users">
-          
+          <div className="col-span-2 mx-56 px-5">
+                <div className="flex flex-row justify-between text-right py-4">
+                  <Label label="User Name" />
+                  <Input
+                    label=""
+                    placeholder="Enter User Name"
+                    onchange={handelChangeUserInput}
+                    name="userName"
+                    type="text"
+                  />
+                </div>
+                <div className="flex flex-row justify-between text-right py-4">
+                  <Label label="Email" />
+                  <Input
+                    label=""
+                    placeholder="Enter Email Address"
+                    onchange={handelChangeUserInput}
+                    name="email"
+                    type="text"
+                  />
+                </div>
+                <div className="flex flex-row justify-between text-left py-4">
+                  <Label label="Password" />
+                  <Input
+                    label=""
+                    placeholder="Create Password"
+                    onchange={handelChangeUserInput}
+                    name="password"
+                    type="Password"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <label className="mb-2 lg:ml-2 ">Role</label>
+                  <select
+                    className="border rounded-full py-2 px-4 mb-4 text-grey-darker w-72"
+                    defaultValue=""
+                    onChange={handelChangeUserInput}
+                    name="role"
+                  >
+                    <option value="">Select Role</option>
+                    <option value="Admin Staff">Admin Staff</option>
+                    <option value="Teacher">Teacher</option>
+                  </select>
+                </div>
+
+                <Button onClick={handleCreateUser} text="Create User" />
+              </div>
           </Tabs.Item>
         </Tabs>
       </div>
