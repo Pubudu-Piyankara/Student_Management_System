@@ -29,15 +29,17 @@ const AnnouncementDetail = (props: Props) => {
 
   
   return (
-    <div>
+    <div className="flex flex-col">
       <h1 className="text-2xl py-4">Announcement Details</h1>
       {announcementDetail.map((announcement: AnnouncementInterface) => (
-        <div key={announcement.idMessage}>
-          <div>
-            <h1>{announcement.title}</h1>
-            <p>{announcement.content}</p>
-            <p>{announcement.publishDate}</p>
+        <div key={announcement.idMessage}  className="flex flex-col">
+          <div className="p-8 border rounded-lg shadow-md bg-slate-100 mx-48">
+            <h1 className="font-semibold py-2 justify-center w-full text-lg">{announcement.title}</h1>
+            <p className="content-center px-5 ">{announcement.content}</p>
+            <div className="py-4 ">
+            <p className="justify-end ">{announcement.publishDate}</p>
             <p>{announcement.expireDate}</p>
+            </div>
           </div>
           
         </div>
