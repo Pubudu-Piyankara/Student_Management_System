@@ -25,8 +25,8 @@ const AdminStaffDetail = (props: Props) => {
     },[staffId]);
 
   return (
-    <div>
-        <h1 className="text-2xl py-4">Staff Details</h1>
+    <div className='content-center items-center justify-center'>
+        <h1 className="text-2xl py-4 items-center justify-center">Staff Details</h1>
         <div>
             {staffDetail.map((staff: StaffInterface) => (
                 <div key={staff.idStaff}>

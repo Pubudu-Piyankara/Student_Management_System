@@ -34,10 +34,10 @@ const AnnouncementDetail = (props: Props) => {
       {announcementDetail.map((announcement: AnnouncementInterface) => (
         <div key={announcement.idMessage}  className="flex flex-col">
           <div className="p-8 border rounded-lg shadow-md bg-slate-100 mx-48">
-            <h1 className="font-semibold py-2 justify-center w-full text-lg">{announcement.title}</h1>
-            <p className="content-center px-5 ">{announcement.content}</p>
+            <h1 className="font-semibold py-2  text-centerjustify-center w-full text-xl">{announcement.title}</h1>
+            <p className="content-center px-5 text-lg text-justify">{announcement.content}</p>
             <div className="py-4 ">
-            <p className="justify-end ">{announcement.publishDate}</p>
+            <p>{announcement.publishDate}</p>
             <p>{announcement.expireDate}</p>
             </div>
           </div>
