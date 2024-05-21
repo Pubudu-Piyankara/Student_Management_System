@@ -24,7 +24,9 @@ const DetailsTeacher = (props: Props) => {
     fetchStudent();
   }, [teacherId]);
   return (
-    <div>
+    <div className="justify-center flex items-center min-h-screen">
+      <div className="border rounded-md shadow-2xl bg-slate-100 p-5">
+
       <h1 className="text-2xl py-4">Student Details</h1>
       <div>
         {teacherDetail.map((teacher: TeacherInterface) => (
@@ -38,6 +40,7 @@ const DetailsTeacher = (props: Props) => {
             <p>{teacher.tic}</p>  
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

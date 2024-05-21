@@ -25,8 +25,10 @@ const AdminStaffDetail = (props: Props) => {
     },[staffId]);
 
   return (
-    <div className='content-center items-center justify-center'>
-        <h1 className="text-2xl py-4 items-center justify-center">Staff Details</h1>
+    <div className='flex flex-col min-h-screen items-center justify-center'>
+        <div className='ounded-lg shadow-2xl rounded-md bg-slate-100 p-5'>
+
+        <h1 className="text-2xl py-4 r">Staff Details</h1>
         <div>
             {staffDetail.map((staff: StaffInterface) => (
                 <div key={staff.idStaff}>
@@ -37,6 +39,7 @@ const AdminStaffDetail = (props: Props) => {
                     <p>{staff.empAge}</p> 
                     </div>
             ))}
+        </div>
         </div>
     </div>
   )

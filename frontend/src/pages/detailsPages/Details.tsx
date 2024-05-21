@@ -28,8 +28,10 @@ const Details = (props: Props) => {
 
 
   return (
-    <div>
-        <h1 className="text-2xl py-4">Teacher Details</h1>
+    <div className="flex flex-col justify-center items-center min-h-screen ">
+        <div className='shadow-2xl rounded-md p-5 bg-slate-100'>
+
+        <h1 className=" text-2xl py-4 mr-10">Student Details</h1>
         <div>
             {studentDetails.map((student: StudentInterface) => (
                 <div key={student.id}>
@@ -48,6 +50,7 @@ const Details = (props: Props) => {
                     <p>{student.extraActivities}</p>
                     </div>
             ))}
+        </div>
         </div>
     </div>
   )
