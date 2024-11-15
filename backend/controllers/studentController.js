@@ -98,6 +98,7 @@ const getStudentCount = (req, res) => {
         const studentCount = result[0].StudentCount;
         return res.status(200).json({studentCount });
     });
+    
 }
 
 export default {
