@@ -57,7 +57,6 @@ const Dashboard = (props: Props) => {
   const [announcement, setAnnouncement] = useState(
     [] as AnnouncementInterface[]
   );
-  
 
   useEffect(() => {
     const fetchAnnouncement = async () => {
@@ -69,16 +68,20 @@ const Dashboard = (props: Props) => {
         console.log(error, "error");
       }
     };
+
     fetchAnnouncement();
+    
   }, []);
+
   return (
+
     <div className="flex flex-row sm:flex overflow-visible ">
       <div className="place-items-start align-top items-center">
         <SideBar />
       </div>
       <div className="w-full left-84 max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl xl:max-w-screen-3xl">
         <div className="flex w-full justify-around gap-[500px] items-center">
-          <DetailNavBar  />
+          <DetailNavBar />
         </div>
 
         <section className="px-5 py-4">
@@ -103,19 +106,21 @@ const Dashboard = (props: Props) => {
             />
           </div>
         </section>
-       <hr className="h-5"></hr>
+        <hr className="h-5"></hr>
         <section className="px-5 py-4">
           <h1 className="text-2xl py-4">Announcement </h1>
           <div className="px-2 grid grid-cols-3">
-          {announcement.map((msg: AnnouncementInterface) => (
-            <div key={msg.idMessage} >
-              <SampleCard title={msg.title} description={msg.msgDescription} id={msg.idMessage}/>
-            </div>
-          ))}
+            {announcement.map((msg: AnnouncementInterface) => (
+              <div key={msg.idMessage}>
+                <SampleCard
+                  title={msg.title}
+                  description={msg.msgDescription}
+                  id={msg.idMessage}
+                />
+              </div>
+            ))}
           </div>
         </section>
-
-      
       </div>
     </div>
   );
